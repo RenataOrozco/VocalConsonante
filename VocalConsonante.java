@@ -5,26 +5,28 @@ public class VocalConsonante {
 
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
-        System.out.print("Introduzca su caracter: ");
+        Solution ex2 = new Solution();
+        String ph2;
         
-        String ph2 = sc.nextLine();
-        Solution ex2 = new Solution(ph2);
+        do {
+            
+            System.out.print("Introduzca su caracter: ");
+            ph2 = sc.nextLine();
+            String result2 = ex2.clasification(ph2);
+            if(!ph2.equals("q")) {
+                System.out.println(result2);
+            }
+            
+        } while(!ph2.equals("q"));
         
-        String result2 = ex2.clasification();
-        System.out.println(result2);
     }
 }
 
 class Solution {
 
     String ph;
-
-    public Solution(String ph) {
-        this.ph = ph;
-    }
     
-    
-    public boolean isOneCharacter() {
+    public boolean isOneCharacter(String ph) {
         if(ph.length() == 1 && Character.isLetter(ph.charAt(0)) == true) {
             return true;
         }
@@ -32,7 +34,7 @@ class Solution {
     }
     
     
-    public String clasification() {
+    public String clasification(String ph) {
         char[] vowels = {'a', 'e', 'i', 'o', 'u', 'á', 'é', 'í', 'ó', 'ú'};
         char[] consonants = {'b', 'c', 'd', 'f', 'g', 'h', 'j','k',
                              'l', 'm', 'n', 'ñ', 'p', 'q', 'r',
@@ -40,7 +42,7 @@ class Solution {
         
         char input;
         
-        if(isOneCharacter() == false) {
+        if(isOneCharacter(ph) == false) {
             return "No es una letra.";
         } 
         /*evalua si la entrada es de una sola letra,
